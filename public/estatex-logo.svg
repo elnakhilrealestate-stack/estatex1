@@ -1,0 +1,41 @@
+<svg width="900" height="900" viewBox="0 0 900 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="30%" r="75%">
+      <stop offset="0%" stop-color="#344154"/>
+      <stop offset="55%" stop-color="#172434"/>
+      <stop offset="100%" stop-color="#0b1520"/>
+    </radialGradient>
+    <linearGradient id="gold" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#f6d78d"/>
+      <stop offset="30%" stop-color="#c8943f"/>
+      <stop offset="58%" stop-color="#fff1bc"/>
+      <stop offset="100%" stop-color="#9d6c24"/>
+    </linearGradient>
+    <linearGradient id="silver" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="45%" stop-color="#bfc5cc"/>
+      <stop offset="70%" stop-color="#f8fbff"/>
+      <stop offset="100%" stop-color="#767f89"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="14" stdDeviation="12" flood-color="#000000" flood-opacity="0.55"/>
+    </filter>
+  </defs>
+  <rect width="900" height="900" rx="28" fill="url(#bg)"/>
+  <g filter="url(#shadow)">
+    <path d="M180 215H423L390 268H240V342H372L340 393H240V488H420L386 545H180V215Z" fill="url(#gold)"/>
+    <path d="M535 318L636 215H724L581 371L745 545H651L529 413L408 545H320L483 371L338 215H432L535 318Z" fill="url(#gold)"/>
+    <path d="M436 382H469V545H436V382Z" fill="url(#silver)"/>
+    <path d="M483 332H516V545H483V332Z" fill="url(#silver)"/>
+    <path d="M530 280H563V545H530V280Z" fill="url(#silver)"/>
+    <path d="M585 316H624V545H585V316ZM600 345L662 389V438L600 396V345Z" fill="url(#silver)" opacity="0.92"/>
+    <path d="M452 463L566 364" stroke="#0c1724" stroke-width="14" stroke-linecap="round" opacity="0.55"/>
+  </g>
+  <g filter="url(#shadow)">
+    <text x="450" y="670" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="118" font-weight="700" fill="url(#silver)">Estate<tspan fill="url(#gold)">X</tspan></text>
+    <line x1="155" y1="735" x2="282" y2="735" stroke="url(#gold)" stroke-width="5"/>
+    <line x1="618" y1="735" x2="745" y2="735" stroke="url(#gold)" stroke-width="5"/>
+    <text x="450" y="752" text-anchor="middle" font-family="Arial, sans-serif" font-size="31" letter-spacing="10" font-weight="700" fill="url(#gold)">REAL ESTATE SOLUTIONS</text>
+    <text x="450" y="815" text-anchor="middle" font-family="Arial, sans-serif" font-size="32" letter-spacing="14" font-weight="700" fill="url(#silver)">BUY - SELL - INVEST</text>
+  </g>
+</svg>
