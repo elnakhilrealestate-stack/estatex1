@@ -1,4 +1,4 @@
-import { db } from "@/db";
+import { db, hasDatabaseUrl } from "@/db";
 import { sql } from "drizzle-orm";
 import {
   projects,
@@ -20,16 +20,28 @@ import { FloatingButtons } from "@/components/FloatingButtons";
 export const dynamic = "force-dynamic";
 
 export default async function HomePage() {
-  await db.execute(sql`select 1`);
+  let featuredProjects: (typeof projects.$inferSelect)[] = [];
+  let allTestimonials: (typeof testimonials.$inferSelect)[] = [];
+  let allCourses: (typeof courses.$inferSelect)[] = [];
+  let allDevelopers: (typeof developers.$inferSelect)[] = [];
 
-  const featuredProjects = await db
-    .select()
-    .from(projects)
-    .where(eq(projects.featured, true));
-
-  const allTestimonials = await db.select().from(testimonials);
-  const allCourses = await db.select().from(courses);
-  const allDevelopers = await db.select().from(developers);
+  if (hasDatabaseUrl) {
+    try {
+      await db.execute(sql`select 1`);
+      featuredProjects = await db
+        .select()
+        .from(projects)
+        .where(eq(projects.featured, true));
+      allTestimonials = await db.select().from(testimonials);
+      allCourses = await db.select().from(courses);
+      allDevelopers = await db.select().from(developers);
+    } catch {
+      featuredProjects = [];
+      allTestimonials = [];
+      allCourses = [];
+      allDevelopers = [];
+    }
+  }
 
   return (
     <main className="min-h-screen">

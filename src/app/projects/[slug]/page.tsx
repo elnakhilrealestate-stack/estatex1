@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { db } from "@/db";
+import { db, hasDatabaseUrl } from "@/db";
 import { projects } from "@/db/schema";
 import { eq } from "drizzle-orm";
 import { Navbar } from "@/components/Navbar";
@@ -16,13 +16,23 @@ type ProjectPageProps = {
 };
 
 async function getProject(slug: string): Promise<Project | undefined> {
-  const result = await db
-    .select()
-    .from(projects)
-    .where(eq(projects.slug, slug))
-    .limit(1);
+  if (hasDatabaseUrl) {
+    try {
+      const result = await db
+        .select()
+        .from(projects)
+        .where(eq(projects.slug, slug))
+        .limit(1);
 
-  return result[0] ?? fallbackProjects.find((project) => project.slug === slug);
+      if (result[0]) {
+        return result[0];
+      }
+    } catch {
+      // Fall back to bundled project data when the database is unavailable.
+    }
+  }
+
+  return fallbackProjects.find((project) => project.slug === slug);
 }
 
 export default async function ProjectDetailsPage({ params }: ProjectPageProps) {
